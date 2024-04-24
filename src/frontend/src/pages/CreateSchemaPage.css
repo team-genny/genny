@@ -1,0 +1,21 @@
+.create-schema-page {
+  max-width: 100%;
+}
+
+.create-schema-page h1 {
+  margin-bottom: 1rem;
+}
+
+.side-by-side {
+  display: flex;
+}
+
+.side-by-side > *:first-child {
+  border-right: var(--gen-border-thick);
+  margin-right: 1rem;
+  padding-right: 1rem;
+}
+
+.side-by-side > * {
+  width: 50%;
+}

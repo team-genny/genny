@@ -1,0 +1,11 @@
+{
+  "include": ["./src"],
+  "exclude": ["./src/frontend"],
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./build",
+    "rootDir": "./src"
+  }
+}

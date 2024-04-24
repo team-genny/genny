@@ -1,0 +1,43 @@
+{
+  "name": "genny",
+  "version": "1.0.0",
+  "description": "A RESTful API and web GUI for generating dummy data against a schema.",
+  "main": "build/api/server.js",
+  "scripts": {
+    "test": "npm run api:test",
+    "build": "npm run api:build && npm run fe:build",
+    "start": "npm run api:start",
+    "dev": "npm run api:dev",
+    "postinstall": "cd src/frontend && npm install",
+    "api:test": "jest",
+    "api:build": "tsc --build --clean && tsc",
+    "api:start": "node build/api/server.js",
+    "api:dev": "tsx ./src/api/server.ts",
+    "fe:init": "cd src/frontend && npm install",
+    "fe:build": "cd src/frontend && npm run build",
+    "fe:dev": "cd src/frontend && npm run dev"
+  },
+  "keywords": [],
+  "contributors": [
+    { "name": "Fergus Bentley", "email": "mail@fergcb.uk", "url": "https://fergcb.uk" }
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.1",
+    "uuid": "^9.0.1",
+    "winston": "^3.13.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/uuid": "^9.0.8",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.5"
+  }
+}

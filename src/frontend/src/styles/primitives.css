@@ -1,0 +1,104 @@
+@import "@catppuccin/palette/css/catppuccin";
+
+:root {
+  --gen-font-sans: "Fira Sans", sans-serif;
+  --gen-font-mono: "Fira Mono", monospace;
+
+  --gen-col-red: var(--ctp-mocha-red);
+  --gen-col-red-rgb: var(--ctp-mocha-red-rgb);
+  --gen-col-orange: var(--ctp-mocha-peach);
+  --gen-col-orange-rgb: var(--ctp-mocha-peach-rgb);
+  --gen-col-yellow: var(--ctp-mocha-yellow);
+  --gen-col-yellow-rgb: var(--ctp-mocha-yellow-rgb);
+  --gen-col-green: var(--ctp-mocha-green);
+  --gen-col-green-rgb: var(--ctp-mocha-green-rgb);
+  --gen-col-cyan: var(--ctp-mocha-teal);
+  --gen-col-cyan-rgb: var(--ctp-mocha-teal-rgb);
+  --gen-col-blue: var(--ctp-mocha-sapphire);
+  --gen-col-blue-rgb: var(--ctp-mocha-sapphire-rgb);
+  --gen-col-indigo: var(--ctp-mocha-blue);
+  --gen-col-indigo-rgb: var(--ctp-mocha-blue-rgb);
+  --gen-col-violet: var(--ctp-mocha-mauve);
+  --gen-col-violet-rgb: var(--ctp-mocha-mauve-rgb);
+  --gen-col-rosewater: var(--ctp-mocha-rosewater);
+  --gen-col-rosewater-rgb: var(--ctp-mocha-rosewater-rgb);
+
+  --gen-col-foreground0: var(--ctp-mocha-text);
+  --gen-col-foreground0-rgb: var(--ctp-mocha-text-rgb);
+  --gen-col-foreground1: var(--ctp-mocha-subtext0);
+  --gen-col-foreground1-rgb: var(--ctp-mocha-subtext0-rgb);
+  --gen-col-foreground2: var(--ctp-mocha-subtext1);
+  --gen-col-foreground2-rgb: var(--ctp-mocha-subtext1-rgb);
+  
+  --gen-col-overlay0: var(--ctp-mocha-overlay0);
+  --gen-col-overlay0-rgb: var(--ctp-mocha-overlay0-rgb);
+  --gen-col-overlay1: var(--ctp-mocha-overlay1);
+  --gen-col-overlay1-rgb: var(--ctp-mocha-overlay1-rgb);
+  --gen-col-overlay2: var(--ctp-mocha-overlay2);
+  --gen-col-overlay2-rgb: var(--ctp-mocha-overlay2-rgb);
+
+  --gen-col-surface0: var(--ctp-mocha-surface0);
+  --gen-col-surface0-rgb: var(--ctp-mocha-surface0-rgb);
+  --gen-col-surface1: var(--ctp-mocha-surface1);
+  --gen-col-surface1-rgb: var(--ctp-mocha-surface1-rgb);
+  --gen-col-surface2: var(--ctp-mocha-surface2);
+  --gen-col-surface2-rgb: var(--ctp-mocha-surface2-rgb);
+
+  --gen-col-base0: var(--ctp-mocha-base);
+  --gen-col-base0-rgb: var(--ctp-mocha-base-rgb);
+  --gen-col-base1: var(--ctp-mocha-mantle);
+  --gen-col-base1-rgb: var(--ctp-mocha-mantle-rgb);
+  --gen-col-base2: var(--ctp-mocha-crust);
+  --gen-col-base2-rgb: var(--ctp-mocha-crust-rgb);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --gen-col-red: var(--ctp-latte-red);
+    --gen-col-red-rgb: var(--ctp-latte-red-rgb);
+    --gen-col-orange: var(--ctp-latte-peach);
+    --gen-col-orange-rgb: var(--ctp-latte-peach-rgb);
+    --gen-col-yellow: var(--ctp-latte-yellow);
+    --gen-col-yellow-rgb: var(--ctp-latte-yellow-rgb);
+    --gen-col-green: var(--ctp-latte-green);
+    --gen-col-green-rgb: var(--ctp-latte-green-rgb);
+    --gen-col-cyan: var(--ctp-latte-teal);
+    --gen-col-cyan-rgb: var(--ctp-latte-teal-rgb);
+    --gen-col-blue: var(--ctp-latte-sapphire);
+    --gen-col-blue-rgb: var(--ctp-latte-sapphire-rgb);
+    --gen-col-indigo: var(--ctp-latte-blue);
+    --gen-col-indigo-rgb: var(--ctp-latte-blue-rgb);
+    --gen-col-violet: var(--ctp-latte-mauve);
+    --gen-col-violet-rgb: var(--ctp-latte-mauve-rgb);
+    --gen-col-rosewater: var(--ctp-latte-rosewater);
+    --gen-col-rosewater-rgb: var(--ctp-latte-rosewater-rgb);
+
+    --gen-col-foreground0: var(--ctp-latte-text);
+    --gen-col-foreground0-rgb: var(--ctp-latte-text-rgb);
+    --gen-col-foreground1: var(--ctp-latte-subtext0);
+    --gen-col-foreground1-rgb: var(--ctp-latte-subtext0-rgb);
+    --gen-col-foreground2: var(--ctp-latte-subtext1);
+    --gen-col-foreground2-rgb: var(--ctp-latte-subtext1-rgb);
+    
+    --gen-col-overlay0: var(--ctp-latte-overlay0);
+    --gen-col-overlay0-rgb: var(--ctp-latte-overlay0-rgb);
+    --gen-col-overlay1: var(--ctp-latte-overlay1);
+    --gen-col-overlay1-rgb: var(--ctp-latte-overlay1-rgb);
+    --gen-col-overlay2: var(--ctp-latte-overlay2);
+    --gen-col-overlay2-rgb: var(--ctp-latte-overlay2-rgb);
+
+    --gen-col-surface0: var(--ctp-latte-surface0);
+    --gen-col-surface0-rgb: var(--ctp-latte-surface0-rgb);
+    --gen-col-surface1: var(--ctp-latte-surface1);
+    --gen-col-surface1-rgb: var(--ctp-latte-surface1-rgb);
+    --gen-col-surface2: var(--ctp-latte-surface2);
+    --gen-col-surface2-rgb: var(--ctp-latte-surface2-rgb);
+
+    --gen-col-base0: var(--ctp-latte-base);
+    --gen-col-base0-rgb: var(--ctp-latte-base-rgb);
+    --gen-col-base1: var(--ctp-latte-mantle);
+    --gen-col-base1-rgb: var(--ctp-latte-mantle-rgb);
+    --gen-col-base2: var(--ctp-latte-crust);
+    --gen-col-base2-rgb: var(--ctp-latte-crust-rgb);
+  }
+}

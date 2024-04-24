@@ -1,0 +1,35 @@
+.input-group-text {
+  position: relative;
+}
+
+.input-group-text label {
+  position: absolute;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-weight: var(--gen-fw-bold);
+  transition: all 100ms ease-in-out;
+}
+
+.input-group-text:focus-within label,
+.input-group-text:has(input:not(:placeholder-shown)) label {
+  margin-top: 0.365rem;
+  font-size: 14px;
+  color: var(--gen-col-text-muted);
+}
+
+.input-group-text input {
+  border: var(--gen-border);
+  background-color: var(--gen-col-bg-panel);
+  color: var(--gen-col-text);
+  font-family: var(--gen-font-body);
+  border-radius: var(--gen-border-radius-sm);
+  padding-inline: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.input-group-text input::placeholder {
+  color: var(--gen-col-bg-panel);
+}

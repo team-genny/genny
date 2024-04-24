@@ -1,0 +1,72 @@
+.icon-button {
+  border-radius: 100%;
+  border: none;
+  aspect-ratio: 1;
+  padding: 0.5rem;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  color: currentColor;
+  font-size: 1em;
+  transition: background-color 200ms ease-in-out;
+}
+
+.icon-button:hover {
+  background-color: rgba(var(--gen-col-bg-rgb) / 0.2)
+}
+
+.icon-button svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+.icon-button-primary {
+  color: var(--gen-col-primary);
+}
+
+.icon-button-primary:hover {
+  background-color: rgba(var(--gen-col-primary-rgb) / 0.2)
+}
+
+.icon-button-secondary {
+  color: var(--gen-col-secondary);
+}
+
+.icon-button-secondary:hover {
+  background-color: rgba(var(--gen-col-secondary-rgb) / 0.2)
+}
+
+.icon-button-info {
+  color: var(--gen-col-blue);
+}
+
+.icon-button-info:hover {
+  background-color: rgba(var(--gen-col-blue-rgb) / 0.2)
+}
+
+.icon-button-success {
+  color: var(--gen-col-green);
+}
+
+.icon-button-success:hover {
+  background-color: rgba(var(--gen-col-green-rgb) / 0.2)
+}
+
+.icon-button-warning {
+  color: var(--gen-col-yellow);
+}
+
+.icon-button-warning:hover {
+  background-color: rgba(var(--gen-col-yellow-rgb) / 0.2)
+}
+
+.icon-button-danger {
+  color: var(--gen-col-red);
+}
+
+.icon-button-danger:hover {
+  background-color: rgba(var(--gen-col-red-rgb) / 0.2)
+}

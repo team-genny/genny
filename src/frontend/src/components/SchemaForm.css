@@ -1,0 +1,41 @@
+.schema-form section {
+  margin-bottom: 2rem;
+}
+
+.schema-form h2 {
+  margin-bottom: 0.5rem;
+}
+
+.schema-form section .input-group {
+  margin-bottom: 0.5rem;
+}
+
+.schema-form .field {
+  display: flex;
+  align-items: center;
+}
+
+.schema-form .field:not(:last-child) {
+  border-bottom: var(--gen-border-thick);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.schema-form .field .inputs {
+  flex-grow: 1;
+  margin-inline-start: 2rem;
+  margin-inline-end: 1rem;
+}
+
+.schema-form .field .field-number {
+  font-size: 1.5rem;
+  font-weight: var(--gen-fw-bold);
+  color: var(--gen-col-text-muted);
+  padding-left: 2rem;
+}
+
+.schema-form .fields .add-btn-container {
+  display: flex;
+  justify-content: right;
+  margin-top: 1rem;
+}

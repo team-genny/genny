@@ -1,0 +1,7 @@
+.page {
+  padding: 1rem;
+  padding-top: 2rem;
+  flex-grow: 1;
+  max-width: 1000px;
+  margin-inline: auto;
+}

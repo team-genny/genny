@@ -1,0 +1,15 @@
+.schema-preview .json {
+  border: var(--gen-border);
+  background-color: var(--gen-col-bg-panel);
+  border-radius: var(--gen-border-radius);
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.schema-preview  .example-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

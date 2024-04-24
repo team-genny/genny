@@ -1,0 +1,36 @@
+@import "./primitives.css";
+
+:root {
+  --gen-font-title: var(--gen-font-sans);
+  --gen-font-body: var(--gen-font-sans);
+  --gen-font-code: var(--gen-font-mono);
+
+  --gen-col-text: var(--gen-col-foreground0);
+  --gen-col-text-muted: var(--gen-col-foreground1);
+  --gen-col-text-on-primary: var(--gen-col-base0);
+  --gen-col-text-on-secondary: var(--gen-col-base0);
+  
+  --gen-col-bg: var(--gen-col-base0);
+  --gen-col-bg-rgb: var(--gen-col-base0-rgb);
+  --gen-col-bg-panel: var(--gen-col-base1);
+  --gen-col-bg-panel-rgb: var(--gen-col-base1-rgb);
+  --gen-col-bg-inset: var(--gen-col-base2);
+  --gen-col-bg-inset-rgb: var(--gen-col-base2-rgb);
+  --gen-col-bg-hover: var(--gen-col-base0);
+  --gen-col-bg-hover-rgb: var(--gen-col-base0-rgb);
+
+  --gen-col-primary: var(--gen-col-cyan);
+  --gen-col-primary-rgb: var(--gen-col-cyan-rgb);
+  --gen-col-secondary: var(--gen-col-rosewater);
+  --gen-col-secondary-rgb: var(--gen-col-rosewater-rgb);
+
+  --gen-col-border: var(--gen-col-surface0);
+  --gen-border: 1px solid var(--gen-col-border);
+  --gen-border-thick: 2px solid var(--gen-col-border);
+  --gen-border-radius: 0.5rem;
+  --gen-border-radius-sm: 0.356rem;
+
+  --gen-fw-light: 200;
+  --gen-fw-normal: 400;
+  --gen-fw-bold: 700;
+}
