@@ -41,3 +41,9 @@ npm ci
 npm run build
 npm start
 ```
+
+# API Documentation on Swagger.io
+
+use the open source swagger editor: https://swagger.io/tools/swagger-editor/ 
+
+then copy the openapi.yaml file into the editor
