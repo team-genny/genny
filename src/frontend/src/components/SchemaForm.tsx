@@ -25,7 +25,8 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
 
   function removeField(idx: number) {
     const newFields = [...fields]
-    setFields(newFields.splice(idx, 1))
+    newFields.splice(idx, 1)
+    setFields(newFields)
   }
 
   function updateField(idx: number, patch: Partial<Field>) {
