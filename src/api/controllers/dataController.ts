@@ -6,7 +6,7 @@ import { ValidationError,PayloadError } from "../errors";
 export async function generateEphemeral(req: Request, res: Response) {
   const schema = req.body
   const data = await dataService.generateOne(schema)
-  res.status(200).json(data)
+  res.json(data)
 }
 
 export async function generateObjects(req: Request, res: Response) {
@@ -19,7 +19,7 @@ export async function generateObjects(req: Request, res: Response) {
   const count = parseInt(countRaw, 10)
 
   const data = await dataService.generateData(schemaId, count)
-  res.status(400).json(data)
+  res.json(data)
 }
 
 export async function generateValues(req: Request, res: Response) {
@@ -35,5 +35,5 @@ export async function generateValues(req: Request, res: Response) {
   const count = parseInt(countRaw, 10)
 
   const data = await dataService.generateValues(formula, count)
-  res.status(400).json(data)
+  res.json(data)
 }
