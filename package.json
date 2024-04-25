@@ -29,11 +29,15 @@
   ],
   "license": "ISC",
   "dependencies": {
+    "@eslint/js": "^9.1.1",
     "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
+    "typescript-eslint": "^7.7.1",
     "uuid": "^9.0.1",
     "winston": "^3.13.0"
   },
