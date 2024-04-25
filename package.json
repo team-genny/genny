@@ -7,7 +7,7 @@
     "test": "npm run api:test",
     "build": "npm run api:build && npm run fe:build",
     "start": "npm run api:start",
-    "dev": "npm run api:dev",
+    "dev": "concurrently \" npm run api:dev \" \" npm run fe:dev \"",
     "postinstall": "cd src/frontend && npm install",
     "api:test": "jest",
     "api:build": "tsc --build --clean && tsc",
@@ -23,8 +23,8 @@
     { "name": "Aamirah Patel", "email": "aamirahpatel@hotmail.co.uk", "url": "https://github.com/AamirahP" },
     { "name": "Joshua Mushaikwa", "email": "jjnotm@gmail.com", "url": "https://github.com/incogzino" },
     { "name": "Nial", "email": "nial@n1al.com", "url": "https://n1al.com" },
-    { "name": "sanju", "email": "ghandhisanju@gmail.com", "url": "https://n1al.com" },
     { "name": "Srijan Vaddadi", "email": "srijan.vaddadi@gmail.com", "url": "https://srijan.uk" }
+    { "name": "sanju", "email": "ghandhisanju@gmail.com", "url": "https://n1al.com" }
   ],
   "license": "ISC",
   "dependencies": {
@@ -40,6 +40,7 @@
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",
     "@types/uuid": "^9.0.8",
+    "concurrently": "^8.2.2",
     "jest": "^29.7.0",
     "ts-jest": "^29.1.2",
     "tsx": "^4.7.2",
