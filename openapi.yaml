@@ -147,7 +147,7 @@ paths:
             application/json:
               schema:
                 type: object
-  /schema/{id}/delete:
+  /schema/{id}:
     delete:
       tags:
         - Schema
