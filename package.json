@@ -19,7 +19,8 @@
   },
   "keywords": [],
   "contributors": [
-    { "name": "Fergus Bentley", "email": "mail@fergcb.uk", "url": "https://fergcb.uk" }
+    { "name": "Fergus Bentley", "email": "mail@fergcb.uk", "url": "https://fergcb.uk" },
+    { "name": "Sanju Ghandhi", "email": "ghandhisanju@gmail.com", "url": "https://github.com/SSG27/" }
   ],
   "license": "ISC",
   "dependencies": {
