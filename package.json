@@ -19,7 +19,8 @@
   },
   "keywords": [],
   "contributors": [
-    { "name": "Fergus Bentley", "email": "mail@fergcb.uk", "url": "https://fergcb.uk" }
+    { "name": "Fergus Bentley", "email": "mail@fergcb.uk", "url": "https://fergcb.uk" },
+    { "name": "Joshua Mushaikwa", "email": "jjnotm@gmail.com", "url": "https://incogzino.com" }
   ],
   "license": "ISC",
   "dependencies": {
