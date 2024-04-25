@@ -22,7 +22,7 @@ function lazy<T>(parserFunc: () => Parser<T>): Parser<T> {
 }
 
 function expr(): Parser<AstNode> {
-  return oneOf([lazy(func), field(), literal()])
+  return oneOf([literal(), lazy(func), field()])
 }
 
 function func(): Parser<FuncNode> {
@@ -153,7 +153,7 @@ function repeated<T>(parser: Parser<T>, delimiter?: Parser<any>, ignoringWhitesp
 }
 
 function re(pattern: RegExp): Parser<string> {
-  const regex = new RegExp("^" + pattern.source, pattern.flags)
+  const regex = new RegExp("^(" + pattern.source + ")", pattern.flags)
   return (input: string) => {
     const match = input.match(regex)
     if (match === null) return [null, input]
