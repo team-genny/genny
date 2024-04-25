@@ -12,7 +12,7 @@
     "api:test": "jest",
     "api:build": "tsc --build --clean && tsc",
     "api:start": "node build/api/server.js",
-    "api:dev": "tsx ./src/api/server.ts",
+    "api:dev": "nodemon --watch src/api --exec tsx ./src/api/server.ts",
     "fe:init": "cd src/frontend && npm install",
     "fe:build": "cd src/frontend && npm run build",
     "fe:dev": "cd src/frontend && npm run dev"
@@ -42,6 +42,7 @@
     "@types/uuid": "^9.0.8",
     "concurrently": "^8.2.2",
     "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
     "ts-jest": "^29.1.2",
     "tsx": "^4.7.2",
     "typescript": "^5.4.5"
