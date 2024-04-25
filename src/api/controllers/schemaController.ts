@@ -29,3 +29,8 @@ export async function create(req: Request, res: Response) {
 export async function deleteById(req: Request, res: Response) {
   res.send("deleteById " + req.params.id)
 }
+
+export async function deleteByIdOrSlug(req: Request, res: Response) {
+  const idOrSlug = req.params.id;
+  res.send("deleteByIdOrSlug " + idOrSlug)
+}
