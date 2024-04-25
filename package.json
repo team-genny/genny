@@ -7,7 +7,7 @@
     "test": "npm run api:test",
     "build": "npm run api:build && npm run fe:build",
     "start": "npm run api:start",
-    "dev": "npm run api:dev ",
+    "dev": "npm run api:dev",
     "postinstall": "cd src/frontend && npm install",
     "api:test": "jest",
     "api:build": "tsc --build --clean && tsc",
