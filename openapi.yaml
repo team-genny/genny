@@ -1,0 +1,189 @@
+openapi: 3.0.3
+info:
+  title: genny
+  description: A RESTful API for generating dummy data against a schema.
+  version: 1.0.11
+tags:
+  - name: Data
+    description: Data Routes
+  - name: Schema
+    description: Schema Routes
+paths:
+  /data:
+    post:
+      tags:
+        - Data
+      summary: Generate Ephemeral
+      operationId: GenerateEphemeral
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+    get:
+      tags:
+        - Data
+      summary: Generate Objects
+      operationId: GenerateObjects
+      parameters:
+        - name: schema
+          in: query
+          schema:
+            type: string
+        - name: count
+          in: query
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /data/values:
+    get:
+      tags:
+        - Data
+      summary: Generate Values
+      operationId: GenerateValues
+      parameters:
+        - name: formula
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: count
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: number
+  /schema:
+    get:
+      tags:
+        - Schema
+      summary: Read All Schemas
+      operationId: ReadAllSchemas
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+    post:
+      tags:
+        - Schema
+      summary: Create Schema
+      operationId: CreateSchema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                slug:
+                  type: string
+                  description: Unique identifier for the schema
+                fields:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Name of the field
+                      formula:
+                        type: string
+                        description: Formula for generating data for the field
+              required:
+                - slug
+                - fields
+      responses:
+        '204':
+          description: Schema created successfully
+        '400':
+          description: Bad request
+  /schema/{id}:
+    get:
+      tags:
+        - Schema
+      summary: Read Schema by ID
+      operationId: ReadSchemaById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+  /schema/{id}/delete:
+    delete:
+      tags:
+        - Schema
+      summary: Delete Schema
+      operationId: DeleteSchema
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Schema deleted successfully
+        '404':
+          description: Schema not found
+components:
+  schemas:
+    Schema:
+      type: object
+      properties:
+        slug:
+          type: string
+          description: Unique identifier for the schema
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the field
+              formula:
+                type: string
+                description: Formula for generating data for the field
+      required:
+        - slug
+        - fields
+
