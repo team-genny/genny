@@ -14,7 +14,7 @@ export async function generateObjects(req: Request, res: Response) {
   if (typeof schemaId !== "string") throw new PayloadError("Parameter 'schema' is required and must be a string.")
   const countRaw = req.query.count ?? "1"
   if (typeof countRaw !== "string" || !Number.isInteger(+countRaw)) {
-    throw "Parameter 'count' must be an integer."
+    throw new PayloadError ("Parameter 'count' must be an integer.")
   }
   const count = parseInt(countRaw, 10)
 
