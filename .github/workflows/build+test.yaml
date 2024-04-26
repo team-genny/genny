@@ -27,6 +27,14 @@ jobs:
 
       - name: Lint frontend
         run: npm run api:lint
+  yaml-lint:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Lint yaml
+        uses: ibiqlik/action-yamllint@v3
   test:
     runs-on: ubuntu-latest
     steps:
