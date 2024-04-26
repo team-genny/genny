@@ -221,6 +221,26 @@ const functions = [
     "str",
     () => firstNames[Math.floor(Math.random() * firstNames.length)]
   ),
+  new FormulaFunction<[{ name: "start", type: "str", optional: true }, { name: "end", type: "str", optional: true }], "str">(
+    "IPV4",
+    [{ name: "start", type: "str", optional: true }, { name: "end", type: "str", optional: true }],
+    "str",
+    (args, ctx: FormulaContext) => {
+      let start = args[0] ? args[0].split(".") : ["*", "*", "*", "*"];
+      let end = args[1] ? args[1].split(".") : start;
+      let result = [];
+      for (let i = 0; i < 4; i++) {
+        let min = start[i] === "*" ? 0 : parseInt(start[i]);
+        let max = end[i] === "*" ? 255 : parseInt(end[i]);
+        if (i === 3 && min === max && min === 0) { // Prevent an issue where the last octet is 0
+          min = 1;
+          max = 254;
+        }
+        result.push(Math.floor(Math.random() * (max - min + 1) + min).toString());
+      }
+      
+      return result.join(".");
+    }
+  ),
 ]
-
 export default new Map(functions.map(func => [func.name, func]))
