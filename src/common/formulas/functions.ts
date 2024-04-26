@@ -3,6 +3,7 @@ import charsets from "./data/charsets"
 import { FormulaError } from "./errors"
 import { FormulaContext } from "./types"
 import * as uuid from "uuid";
+import { start } from "../../api/app";
 
 type ParamType = "str" | "num" | "bool"
 
@@ -221,11 +222,26 @@ const functions = [
     "str",
     () => firstNames[Math.floor(Math.random() * firstNames.length)]
   ),
-  new FormulaFunction<[{ name: "start", type: "str", optional: true }, { name: "end", type: "str", optional: true }], "str">(
+  new FormulaFunction(
     "IPV4",
-    [{ name: "start", type: "str", optional: true }, { name: "end", type: "str", optional: true }],
+    [
+      { name: "start", type: "str", optional: true }, 
+      { name: "end", type: "str", optional: true},
+    ],
     "str",
-    (args, _ctx: FormulaContext) => {
+    (args) => {
+      
+      if (args[0] && !args[1]) { // if only one argument is provided
+        if ((typeof args[0] !== "string") || (!args[0].includes(".*.")) || (!/^((([0-9]{1,2})|(1[0-9]{2,2})|(2[0-4][0-9])|(25[0-5])|\*)\.){3}(([0-9]{1,2})|(1[0-9]{2,2})|(2[0-4][0-9])|(25[0-5])|\*)$/.test(args[0]))) {
+          throw new FormulaError(`Invalid IPv4 address: ${args[0]}`)
+        }
+      }
+      if (args[0] && args[1] && !args[0].match(/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/)) {
+        throw new FormulaError(`Invalid IPv4 address: ${args[0]}`)
+      }
+      if (args[1] && args[0] && !args[1].match(/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/)) {
+        throw new FormulaError(`Invalid IPv4 address: ${args[1]}`)
+      }
       let start = args[0] ? args[0].split(".") : ["*", "*", "*", "*"];
       let end = args[1] ? args[1].split(".") : start;
       let result = [];
