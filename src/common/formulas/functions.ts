@@ -3,7 +3,6 @@ import charsets from "./data/charsets"
 import { FormulaError } from "./errors"
 import { FormulaContext } from "./types"
 import * as uuid from "uuid";
-import { start } from "../../api/app";
 
 type ParamType = "str" | "num" | "bool"
 
