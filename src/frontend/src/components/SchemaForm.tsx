@@ -14,6 +14,7 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
   const [slug, setSlug] = useState<Schema["slug"]>("");
   const [fields, setFields] = useState<Schema["fields"]>([]);
   const [buttonClassName, setButtonClassName] = useState("btn-disabled");
+  const [schemaCreated, setSchemaCreated] = useState(false)
 
   useEffect(() => {
     onChange({ _id: "<unknown>", slug, fields });
@@ -48,12 +49,35 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
     e.preventDefault();
   }
 
+  const createSchema = async () => {
+    try {
+      const schemaData = {
+        slug,
+        fields
+      };
+      const response = await fetch ("api/schemas", { 
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(schemaData)
+      });
+      if (!response.ok) {
+        throw new Error ("Failed to create schema")
+      }
+      setSchemaCreated(true)
+      console.log("Schema created successfully")
+     } catch (error) {
+      console.error("Error creating schema:", error)
+     }
+  }
+
   const allFieldsFilled = fields.every(
     (fields) => fields.name.trim() !== "" && fields.formula.trim() !== ""
   );
 
   useEffect(() => {
-    setButtonClassName(allFieldsFilled ? "" : "btn-disabled");
+    setButtonClassName(allFieldsFilled && fields.length > 0 ? "" : "btn-disabled");
   }, [allFieldsFilled]);
 
   return (
@@ -103,9 +127,10 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
           </Button>
         </div>
         <div className="add-btn-container">
-          <Button className={buttonClassName} onClick={() => {}}>
+          <Button className={buttonClassName} onClick={createSchema}>
             Create Schema
           </Button>
+          {schemaCreated && <p>Schema created successfully!</p>}
         </div>
       </section>
     </form>
