@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import * as schemaService from "../services/schemaService";
 import { ResourceNotFoundError, PayloadError, ValidationError } from "../errors";
-
+import { compileSchema } from "../../common/formulas/compiler";
 export async function readAll(req: Request, res: Response) {
   const schemas = await schemaService.list();
   res.json(schemas);
@@ -21,6 +21,13 @@ export async function readById(req: Request, res: Response) {
 }
 
 export async function create(req: Request, res: Response) {
+  try {
+    compileSchema(req.body)(0)
+  }
+  catch (err) {
+    res.status(400).json({ error: err.message })
+    throw new ValidationError(err.message)
+  }
   const { slug, fields } = req.body;
   if (typeof slug !== "string" || !Array.isArray(fields))
     throw new PayloadError("Schema must have a slug and at least one field");

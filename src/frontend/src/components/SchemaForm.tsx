@@ -63,7 +63,8 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
         },
         body: JSON.stringify(schemaData),
       });
-      if (!response.ok) {
+      console.log(response);
+      if (!response.ok || response.status === 400) {
         const res = await response.json();
         setError(`${res.error}`);
         throw new Error("Failed to create schema");
