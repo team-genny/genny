@@ -10,6 +10,7 @@ type ButtonProps = {
   icon?: IconDefinition,
   className?: string,
   children: React.ReactNode,
+  disabled?: boolean;
 } & ({ onClick: () => void } | { href: string })
 
 function hasHref(props: unknown): props is { href: string } {
@@ -47,6 +48,7 @@ interface LinkButtonProps {
   href: string
   className: string
   children: React.ReactNode
+  disabled?: boolean
 }
 
 function LinkButton({ href, className, children }: LinkButtonProps) {
@@ -61,6 +63,7 @@ interface EventButtonProps {
   onClick: () => void
   className: string
   children: React.ReactNode
+  disabled?: boolean
 }
 
 function EventButton({ onClick, className, children }: EventButtonProps) {
