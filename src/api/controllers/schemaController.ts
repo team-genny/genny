@@ -24,12 +24,7 @@ export async function create(req: Request, res: Response) {
   const { slug, fields } = req.body;
   if (typeof slug !== "string" || !Array.isArray(fields))
     throw new PayloadError("Schema must have a slug and at least one field");
-  if (
-    slug === "" ||
-    fields.length === 0 ||
-    slug === undefined ||
-    fields === undefined
-  )
+  if (slug === "" || fields.length === 0 || slug === undefined || fields === undefined)
     throw new PayloadError("Schema must have a slug and at least one field");
   if (fields.length > 100 || slug.length > 100)
     throw new PayloadError("Schema too large");
