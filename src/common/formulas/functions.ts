@@ -225,7 +225,7 @@ const functions = [
     "IPV4",
     [{ name: "start", type: "str", optional: true }, { name: "end", type: "str", optional: true }],
     "str",
-    (args, ctx: FormulaContext) => {
+    (args, _ctx: FormulaContext) => {
       let start = args[0] ? args[0].split(".") : ["*", "*", "*", "*"];
       let end = args[1] ? args[1].split(".") : start;
       let result = [];
