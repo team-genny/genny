@@ -42,3 +42,10 @@ export async function deleteByIdOrSlug(req: Request, res: Response) {
 
   res.send(schema);
 }
+
+export async function updateByIdOrSlug(req: Request, res: Response) {
+  const idOrSlug = req.params.id;
+  const schema = await schemaService.updateSchema(idOrSlug, req.body);
+
+  res.send(schema);
+}
