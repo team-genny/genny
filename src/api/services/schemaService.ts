@@ -32,7 +32,7 @@ export async function deleteSchema(id: string) {
   if (schemaToDelete === null)
     throw new ResourceNotFoundError(`No such schema with ID or slug '${id}'`);
   else {
-    const data = await schemaToDelete.deleteOne({ id: id });
+    const data = await schemaToDelete.deleteOne();
     return data;
   }
 }
