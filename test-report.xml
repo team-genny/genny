@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/Users/sanjughandhi/Documents/GitHub/genny-1/tests/api/formulas.test.ts">
+    <testCase name="Parser parses string literal" duration="1"/>
+    <testCase name="Parser parses number literal" duration="1"/>
+    <testCase name="Parser parses boolean literal" duration="0"/>
+    <testCase name="Parser parses function call" duration="1"/>
+    <testCase name="Compiler compiles a nullary function" duration="2"/>
+  </file>
+</testExecutions>
