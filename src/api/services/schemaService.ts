@@ -24,7 +24,7 @@ export async function find(idOrSlug: string) {
 export async function create(data: ISchema) {
   const schema = new Schema(data);
   const saved = await schema.save();
-  return saved._id;
+  return saved;
 }
 
 export async function deleteSchema(id: string) {
