@@ -18,7 +18,8 @@
     "fe:build": "cd src/frontend && npm run build",
     "fe:dev": "cd src/frontend && npm run dev",
     "api:lint": "eslint src/api/**/*.ts",
-    "fe:lint": "eslint src/frontend/**/*.ts"
+    "fe:lint": "eslint src/frontend/**/*.ts",
+    "e2e": "playwright test"
   },
   "keywords": [],
   "contributors": [
