@@ -28,8 +28,9 @@ export async function create(req: Request, res: Response) {
     throw new PayloadError("Schema must have a slug and at least one field");
   if (fields.length > 100 || slug.length > 100)
     throw new PayloadError("Schema too large");
-  const id = await schemaService.create(req.body);
-  res.status(204).header("Location", `/schemas/${id}`).send();
+  const newSchema = await schemaService.create(req.body);
+  const id = newSchema._id;
+  res.status(200).header("Location", `/api/schemas/${id}`).send(newSchema);
 }
 
 export async function deleteById(req: Request, res: Response) {

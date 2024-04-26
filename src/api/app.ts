@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import router from "./router";
 import logger from "./logger"
-import { GennyError } from "./errors";
+import { GennyError, ResourceNotFoundError } from "./errors";
 
 const app = express();
 
@@ -14,7 +14,10 @@ app.use((req, res, next) => {
 
 app.use("/api", router);
 app.use(express.static("build/frontend"))
-app.get('(/*)?', async (req, res) => {
+app.get('(/api/*)?', (req, res) => {
+  throw new ResourceNotFoundError(`No such API endpoint '${req.url}'`)
+});
+app.get('(/*)?', (req, res) => {
   res.sendFile(path.join(__dirname, "../../build/frontend/index.html"));
 });
 
