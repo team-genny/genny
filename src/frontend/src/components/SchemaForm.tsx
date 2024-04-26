@@ -5,7 +5,7 @@ import { Field, Schema } from "../types";
 import Button from "./Button";
 import { faAdd, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "./IconButton";
-
+import Alert from "./Alert";
 interface SchemaFormProps {
   onChange: (schema: Schema) => void;
 }
@@ -67,8 +67,10 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
       }
       setSchemaCreated(true);
       console.log("Schema created successfully");
+      return <Alert variant="success">Schema created successfully</Alert>;
     } catch (error) {
       console.error("Error creating schema:", error);
+      return <Alert variant="danger">Failed to create schema</Alert>;
     }
   };
 
