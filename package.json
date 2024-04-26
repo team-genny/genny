@@ -10,7 +10,7 @@
     "dev": "concurrently \" npm run api:dev \" \" npm run fe:dev \"",
     "lint": "npm run api:lint && npm run fe:lint",
     "postinstall": "cd src/frontend && npm install",
-    "api:test": "jest",
+    "api:test": "jest --coverage",
     "api:build": "tsc --build --clean && tsc",
     "api:start": "node build/api/server.js",
     "api:dev": "nodemon --watch src/api --exec tsx ./src/api/server.ts",
