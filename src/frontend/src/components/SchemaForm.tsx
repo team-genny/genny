@@ -5,7 +5,7 @@ import { Field, Schema } from "../types";
 import Button from "./Button";
 import { faAdd, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "./IconButton";
-
+import Alert from "./Alert";
 interface SchemaFormProps {
   onChange: (schema: Schema) => void;
 }
@@ -15,6 +15,7 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
   const [fields, setFields] = useState<Schema["fields"]>([]);
   const [buttonClassName, setButtonClassName] = useState("btn-disabled");
   const [schemaCreated, setSchemaCreated] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     onChange({ _id: "<unknown>", slug, fields });
@@ -48,8 +49,8 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
-
   const createSchema = async () => {
+    setError(null);
     try {
       const schemaData = {
         slug,
@@ -62,7 +63,10 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
         },
         body: JSON.stringify(schemaData),
       });
-      if (!response.ok) {
+      console.log(response);
+      if (!response.ok || response.status === 400) {
+        const res = await response.json();
+        setError(`${res.error}`);
         throw new Error("Failed to create schema");
       }
       setSchemaCreated(true);
@@ -132,8 +136,9 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
           <Button className={buttonClassName} onClick={createSchema}>
             Create Schema
           </Button>
-          </div>
-          <div className="add-btn-container"> {schemaCreated && <p>Schema created successfully!</p>} </div>  
+        </div>
+        {error && <div><br/> <Alert variant="danger">{error} </Alert></div>}
+        <div className="add-btn-container"> {schemaCreated && <p>Schema created successfully!</p>} </div>  
       </section>
     </form>
   );
