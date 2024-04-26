@@ -32,11 +32,7 @@ export async function deleteById(req: Request, res: Response) {
 
 export async function deleteByIdOrSlug(req: Request, res: Response) {
   const idOrSlug = req.params.id;
-  const schema = await schemaService.find(idOrSlug);
+  const schema = await schemaService.deleteSchema(idOrSlug);
 
-  if (schema === null)
-    throw new ResourceNotFoundError(
-      `No such schema with ID or slug '${idOrSlug}'`
-    );
-  else res.send("deleteByIdOrSlug " + schema);
+  res.send(schema);
 }
