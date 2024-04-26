@@ -8,6 +8,7 @@
     "build": "npm run api:build && npm run fe:build",
     "start": "npm run api:start",
     "dev": "concurrently \" npm run api:dev \" \" npm run fe:dev \"",
+    "lint": "npm run api:lint && npm run fe:lint",
     "postinstall": "cd src/frontend && npm install",
     "api:test": "jest",
     "api:build": "tsc --build --clean && tsc",
@@ -15,7 +16,9 @@
     "api:dev": "nodemon --watch src/api --exec tsx ./src/api/server.ts",
     "fe:init": "cd src/frontend && npm install",
     "fe:build": "cd src/frontend && npm run build",
-    "fe:dev": "cd src/frontend && npm run dev"
+    "fe:dev": "cd src/frontend && npm run dev",
+    "api:lint": "eslint src/api/**/*.ts",
+    "fe:lint": "eslint src/frontend/**/*.ts"
   },
   "keywords": [],
   "contributors": [
@@ -28,11 +31,16 @@
   ],
   "license": "ISC",
   "dependencies": {
+    "@eslint/js": "^9.1.1",
     "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.1",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
+    "globals": "^15.0.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
+    "typescript-eslint": "^7.7.1",
     "uuid": "^9.0.1",
     "winston": "^3.13.0"
   },

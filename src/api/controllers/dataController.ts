@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import * as dataService from "../services/dataService"
-import { ValidationError } from "../errors";
+import { ValidationError,PayloadError } from "../errors";
 
 export async function generateEphemeral(req: Request, res: Response) {
   const schema = req.body
@@ -11,10 +11,10 @@ export async function generateEphemeral(req: Request, res: Response) {
 
 export async function generateObjects(req: Request, res: Response) {
   const schemaId = req.query.schema
-  if (typeof schemaId !== "string") throw "Parameter 'schema' is required and must be a string."
+  if (typeof schemaId !== "string") throw new PayloadError("Parameter 'schema' is required and must be a string.")
   const countRaw = req.query.count ?? "1"
   if (typeof countRaw !== "string" || !Number.isInteger(+countRaw)) {
-    throw "Parameter 'count' must be an integer."
+    throw new PayloadError ("Parameter 'count' must be an integer.")
   }
   const count = parseInt(countRaw, 10)
 
