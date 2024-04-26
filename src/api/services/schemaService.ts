@@ -1,7 +1,7 @@
 import Schema from "../models/Schema";
 import { Types } from "mongoose";
 import { Schema as ISchema } from "../../common/types";
-import { ResourceNotFoundError, ValidationError } from "../errors";
+import { ResourceNotFoundError } from "../errors";
 
 export async function list() {
   return await Schema.find({});
@@ -37,10 +37,6 @@ export async function deleteSchema(id: string) {
   }
 }
 export async function updateSchema(id: string, data: ISchema) {
-  if (typeof data.slug !== "string" || !Array.isArray(data.fields))
-    throw new ValidationError("Slug must be a string and fields must be an array");
-  if (data.slug === "" || data.fields.length === 0)
-    throw new ValidationError("Schema must have a slug and at least one field");
   const schemaToUpdate = await find(id);
   if (schemaToUpdate === null)
     throw new ResourceNotFoundError(`No such schema with ID or slug '${id}'`);
