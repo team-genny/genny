@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import * as schemaService from "../services/schemaService";
-import { ResourceNotFoundError, PayloadError } from "../errors";
+import { ResourceNotFoundError, PayloadError, ValidationError } from "../errors";
 
 export async function readAll(req: Request, res: Response) {
   const schemas = await schemaService.list();
@@ -39,6 +39,17 @@ export async function deleteById(req: Request, res: Response) {
 export async function deleteByIdOrSlug(req: Request, res: Response) {
   const idOrSlug = req.params.id;
   const schema = await schemaService.deleteSchema(idOrSlug);
+
+  res.send(schema);
+}
+
+export async function updateByIdOrSlug(req: Request, res: Response) {
+  const idOrSlug = req.params.id;
+  if (typeof req.body.slug !== "string" || !Array.isArray(req.body.fields))
+    throw new ValidationError("Slug must be a string and fields must be an array");
+  if (req.body.slug === "" || req.body.fields.length === 0)
+    throw new ValidationError("Schema must have a slug and at least one field");
+  const schema = await schemaService.updateSchema(idOrSlug, req.body);
 
   res.send(schema);
 }

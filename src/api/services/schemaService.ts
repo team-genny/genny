@@ -36,3 +36,13 @@ export async function deleteSchema(id: string) {
     return data;
   }
 }
+export async function updateSchema(id: string, data: ISchema) {
+  const schemaToUpdate = await find(id);
+  if (schemaToUpdate === null)
+    throw new ResourceNotFoundError(`No such schema with ID or slug '${id}'`);
+  else {
+    schemaToUpdate.set(data);
+    const saved = await schemaToUpdate.save();
+    return saved;
+  }
+}
