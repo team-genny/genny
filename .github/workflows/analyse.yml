@@ -22,3 +22,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: debug
+        run: ls -la && pwd && ls -la /github/workspace && cat /github/workspace/./coverage/lcov.info
