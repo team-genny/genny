@@ -55,7 +55,7 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
         slug,
         fields
       };
-      const response = await fetch ("api/schemas", { 
+      const response = await fetch ("/api/schemas", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json"
