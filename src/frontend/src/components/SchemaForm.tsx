@@ -14,7 +14,7 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
   const [slug, setSlug] = useState<Schema["slug"]>("");
   const [fields, setFields] = useState<Schema["fields"]>([]);
   const [buttonClassName, setButtonClassName] = useState("btn-disabled");
-  const [schemaCreated, setSchemaCreated] = useState(false)
+  const [schemaCreated, setSchemaCreated] = useState(false);
 
   useEffect(() => {
     onChange({ _id: "<unknown>", slug, fields });
@@ -53,31 +53,33 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
     try {
       const schemaData = {
         slug,
-        fields
+        fields,
       };
-      const response = await fetch ("/api/schemas", { 
+      const response = await fetch("/api/schemas", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(schemaData)
+        body: JSON.stringify(schemaData),
       });
       if (!response.ok) {
-        throw new Error ("Failed to create schema")
+        throw new Error("Failed to create schema");
       }
-      setSchemaCreated(true)
-      console.log("Schema created successfully")
-     } catch (error) {
-      console.error("Error creating schema:", error)
-     }
-  }
+      setSchemaCreated(true);
+      console.log("Schema created successfully");
+    } catch (error) {
+      console.error("Error creating schema:", error);
+    }
+  };
 
   const allFieldsFilled = fields.every(
     (fields) => fields.name.trim() !== "" && fields.formula.trim() !== ""
   );
 
   useEffect(() => {
-    setButtonClassName(allFieldsFilled && fields.length > 0 ? "" : "btn-disabled");
+    setButtonClassName(
+      allFieldsFilled && fields.length > 0 ? "" : "btn-disabled"
+    );
   }, [allFieldsFilled]);
 
   return (
@@ -130,8 +132,8 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
           <Button className={buttonClassName} onClick={createSchema}>
             Create Schema
           </Button>
-          {schemaCreated && <p>Schema created successfully!</p>}
-        </div>
+          </div>
+          <div className="add-btn-container"> {schemaCreated && <p>Schema created successfully!</p>} </div>  
       </section>
     </form>
   );
