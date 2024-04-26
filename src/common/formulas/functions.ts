@@ -221,6 +221,41 @@ const functions = [
     "str",
     () => firstNames[Math.floor(Math.random() * firstNames.length)]
   ),
+  new FormulaFunction(
+    "IPV4",
+    [
+      { name: "start", type: "str", optional: true }, 
+      { name: "end", type: "str", optional: true},
+    ],
+    "str",
+    (args) => {
+      
+      if (args[0] && !args[1]) { // if only one argument is provided
+        if ((typeof args[0] !== "string") || (!args[0].includes(".*.")) || (!/^((([0-9]{1,2})|(1[0-9]{2,2})|(2[0-4][0-9])|(25[0-5])|\*)\.){3}(([0-9]{1,2})|(1[0-9]{2,2})|(2[0-4][0-9])|(25[0-5])|\*)$/.test(args[0]))) {
+          throw new FormulaError(`Invalid IPv4 address: ${args[0]}`)
+        }
+      }
+      if (args[0] && args[1] && !args[0].match(/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/)) {
+        throw new FormulaError(`Invalid IPv4 address: ${args[0]}`)
+      }
+      if (args[1] && args[0] && !args[1].match(/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/)) {
+        throw new FormulaError(`Invalid IPv4 address: ${args[1]}`)
+      }
+      let start = args[0] ? args[0].split(".") : ["*", "*", "*", "*"];
+      let end = args[1] ? args[1].split(".") : start;
+      let result = [];
+      for (let i = 0; i < 4; i++) {
+        let min = start[i] === "*" ? 0 : parseInt(start[i]);
+        let max = end[i] === "*" ? 255 : parseInt(end[i]);
+        if (i === 3 && min === max && min === 0) { // Prevent an issue where the last octet is 0
+          min = 1;
+          max = 254;
+        }
+        result.push(Math.floor(Math.random() * (max - min + 1) + min).toString());
+      }
+      
+      return result.join(".");
+    }
+  ),
 ]
-
 export default new Map(functions.map(func => [func.name, func]))
