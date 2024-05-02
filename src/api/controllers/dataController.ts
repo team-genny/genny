@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import * as dataService from "../services/dataService"
-import { ValidationError,PayloadError } from "../errors";
+import { ValidationError,PayloadError, ResourceNotFoundError } from "../errors";
 
 
 export async function generateEphemeral(req: Request, res: Response) {
@@ -53,4 +53,17 @@ export async function generatePersistentData(req: Request, res: Response) {
   
   const data = await dataService.persistData(schema, count, slug)
   res.json(data)
+}
+
+export async function readByIdOrSlug(req: Request, res: Response) {
+  const idOrSlug = req.params.idOrSlug;
+
+  const data = await dataService.findPersistData(idOrSlug);
+
+  if (data === null)
+    throw new ResourceNotFoundError(
+      `No peristed data with ID or slug '${idOrSlug}'`
+    );
+
+  res.json(data);
 }
