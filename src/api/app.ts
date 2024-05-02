@@ -8,6 +8,10 @@ const app = express();
 
 const mode = process.env.MODE || "prod";
 
+const devModeHandler = (req, res) => {
+  res.status(404).send("No such page, request would have been redirected to the front-end in production.")
+}
+
 app.use(express.json())
 app.use((req, res, next) => {
   logger.info(`${req.method} ${req.url}`)
@@ -15,7 +19,12 @@ app.use((req, res, next) => {
 })
 
 app.use("/api", router);
-app.use(express.static("build/frontend"))
+if (mode === "prod") {
+  app.use(express.static("build/frontend"))
+}
+else {
+  app.use(devModeHandler)
+}
 app.get('(/api/*)?', (req, res) => {
   throw new ResourceNotFoundError(`No such API endpoint '${req.url}'`)
 });
