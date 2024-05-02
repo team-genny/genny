@@ -24,7 +24,7 @@ app.get('(/*)?', (req, res) => {
     return res.status(404).send("No such page, request would have been redirected to the front-end in production.")
   }
   else {
-  res.sendFile(path.join(__dirname, "../../build/frontend/index.html"));
+    res.sendFile(path.join(__dirname, "../../build/frontend/index.html"));
   }
 });
 
