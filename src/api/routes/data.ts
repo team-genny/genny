@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post("/", asyncHandler(dataController.generateEphemeral));
 router.get("/", asyncHandler(dataController.generateObjects));
-router.get("/values", asyncHandler(dataController.generateValues))
+router.get("/values", asyncHandler(dataController.generateValues));
+router.post ("/persistent", asyncHandler(dataController.generatePersistentData))
 
 export default router;
