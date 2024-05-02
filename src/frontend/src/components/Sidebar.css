@@ -2,31 +2,42 @@
   background-color: var(--gen-col-bg-inset);
   height: 100vh;
   max-height: 100%;
-  width: 16rem;
-  padding-top: 1.5rem;
+  width: 15%;
+  padding-top: 2%;
 }
 
 .sidebar-heading {
-  margin-inline: 1rem;
-  margin-bottom: 1rem;
+  margin-inline: 5%;
+  margin-bottom: 5%;
   background-color: var(--gen-col-primary);
   color: var(--gen-col-text-on-primary);
-  padding-inline: 1rem;
-  padding-block: 0.75rem;
+  padding-inline: 2%;
+  padding-block: 2%;
   border-radius: var(--gen-border-radius);
   display: flex;
   align-items: center;
+  @media screen and (min-width:1024px){
+    margin-inline: 5%;
+    margin-bottom: 5%;
+    padding-inline: 5%;
+    padding-block: 5%;
+  }
+  
 }
 
 .sidebar-heading > svg {
-  font-size: 28px;
   position: relative;
-  top: -2px;
+  top: 1%;
+  @media screen and (min-width:1024px){
+    font-size: 28px;}
 }
 
 .sidebar-heading h1 {
-  font-size: 22px;
-  margin-left: 1rem;
+  font-size: 16px;
+  margin-left: 1%;
+  @media screen and (min-width:1024px){
+    font-size: 32px;
+    margin-left: 5%;}
 }
 
 .sidebar-heading .menu-btn {
@@ -36,12 +47,13 @@
 .sidebar ul {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 5%;
 }
 
 .sidebar-link {
-  margin-inline: 1rem;
-  padding: 1rem;
+  font-size: 10px;
+  margin-inline: 2%;
+  padding: 3%;
   padding-left: 1rem;
   display: block;
   max-width: 100%;
@@ -50,6 +62,8 @@
   text-decoration: none;
   color: var(--gen-col-text);
   transition: background-color 200ms ease-in-out;
+  @media screen and (min-width:1024px){
+    font-size: 28px;}
 }
 
 .sidebar-link:hover {
@@ -64,8 +78,9 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 
-  --corner-size: calc((var(--gen-border-radius) + 1rem) / 2);
-  --corner-width: 0.5rem;
+  --corner-size: calc((var(--gen-border-radius) + 15%) / 2);
+  --corner-width: 0.5%;
+  
 }
 
 .sidebar-link.active::before,

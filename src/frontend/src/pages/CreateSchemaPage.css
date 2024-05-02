@@ -11,6 +11,7 @@
 }
 
 .side-by-side > *:first-child {
+  
   border-right: var(--gen-border-thick);
   margin-right: 1rem;
   padding-right: 1rem;

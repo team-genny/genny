@@ -8,6 +8,9 @@
   overflow: auto;
   margin-bottom: 1rem;
   margin-top: 0.5rem;
+  @media screen and (max-width:1024px){
+  font-size: 12px;
+}
 }
 
 .schema-preview  .example-header {

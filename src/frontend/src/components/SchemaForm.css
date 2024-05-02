@@ -22,16 +22,22 @@
 }
 
 .schema-form .field .inputs {
+margin-inline-start:5% ;
+margin-inline-end: 2%;
+  @media screen and (min-width:1024px){
   flex-grow: 1;
-  margin-inline-start: 2rem;
-  margin-inline-end: 1rem;
+  margin-inline-start: 1rem;
+  margin-inline-end: .5rem%;
 }
-
+}
 .schema-form .field .field-number {
-  font-size: 1.5rem;
+  font-size: 15;
   font-weight: var(--gen-fw-bold);
   color: var(--gen-col-text-muted);
-  padding-left: 2rem;
+  padding-left: 1%;
+  @media screen and (min-width:1024px){
+    padding-left: 2rem;
+  }
 }
 
 .schema-form .fields .add-btn-container {
