@@ -73,14 +73,17 @@ export default function SchemaForm({ onChange, schema }: Readonly<SchemaFormProp
         },
         body: JSON.stringify(schemaData),
       });
-      console.log(response);
       if (!response.ok || response.status === 400) {
         const res = await response.json();
         setError(`${res.error}`);
         throw new Error("Failed to create schema");
       }
       setSchemaCreated(true);
+
       console.log("Schema created successfully");
+      setTimeout(() => {
+        setSchemaCreated(false);
+      }, 3000);
     } catch (error) {
       console.error("Error creating schema:", error);
     }
