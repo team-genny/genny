@@ -11,9 +11,9 @@ export default function SchemasList() {
 
   return (
     <table className="schemas-list">
-      <tbody>
+      <tbody className="body">
         {schemas.map(schema => (
-          <tr key={schema._id}>
+          <tr className="rows" key={schema._id}>
             <td className="slug">{schema.slug}</td>
             <td className="fields">{schema.fields.length} fields</td>
             <td className="controls">

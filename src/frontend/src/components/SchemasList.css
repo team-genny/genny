@@ -5,9 +5,14 @@
   border-spacing: 0;
 }
 
-.schemas-list td {
+.schemas-list .body {
   background-color: var(--gen-col-bg-panel);
+}
+
+.schemas-list td {
   padding-block: 0.75rem;
+  background-color: var(--gen-col-bg-panel);
+  
 }
 
 .schemas-list td:first-child {
@@ -35,4 +40,9 @@
 .schemas-list .controls {
   display: flex;
   gap: 0.5rem;
+  padding-block: 0.75rem;
+}
+
+.schemas-list .rows {
+  padding-block: 0.75rem;
 }
