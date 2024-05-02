@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 
 import * as dataService from "../services/dataService"
 import { ValidationError,PayloadError } from "../errors";
+import Schema from "../models/Schema";
 
 export async function generateEphemeral(req: Request, res: Response) {
   const schema = req.body
@@ -35,5 +36,22 @@ export async function generateValues(req: Request, res: Response) {
   const count = parseInt(countRaw, 10)
 
   const data = await dataService.generateValues(formula, count)
+  res.json(data)
+}
+
+export async function generatePersistentData(req: Request, res: Response) {
+
+  const schema = req.body.schema
+  if (typeof schema !== "string") throw new ValidationError("Parameter 'schema' is required and must be a string.")
+
+  const count = req.body.count ?? 1
+
+  if (!Number.isInteger(count))
+    throw new ValidationError("Parameter 'count' must be an integer.")
+
+  const slug = req.body.slug
+  if (typeof slug !== "string") throw new ValidationError("Parameter 'slug' is required and must be a string.")
+  
+  const data = await dataService.persistData(schema, count, slug)
   res.json(data)
 }
