@@ -139,16 +139,19 @@ export default function SchemaForm({ onChange, schema }: Readonly<SchemaFormProp
                 />
               </div>
               <div className="controls">
-                <IconButton
-                  icon={faArrowUp}
-                  variant="secondary"
-                  onClick={() => i > 0 && moveField(i, i - 1)}
-                />
-                <IconButton
-                  icon={faArrowDown}
-                  variant="secondary"
-                  onClick={() => i < fields.length - 1 && moveField(i, i + 1)}
-                />
+                { fields.length > 1 && 
+                <div>
+                  <IconButton
+                    icon={faArrowUp}
+                    variant="secondary"
+                    onClick={() => i > 0 && moveField(i, i - 1)}
+                  />
+                  <IconButton
+                    icon={faArrowDown}
+                    variant="secondary"
+                    onClick={() => i < fields.length - 1 && moveField(i, i + 1)}
+                  />
+                </div>}
                 <IconButton
                   icon={faTrashAlt}
                   variant="danger"
