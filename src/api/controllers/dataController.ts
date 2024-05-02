@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
-
 import * as dataService from "../services/dataService"
 import { ValidationError,PayloadError } from "../errors";
-import Schema from "../models/Schema";
+
 
 export async function generateEphemeral(req: Request, res: Response) {
   const schema = req.body
