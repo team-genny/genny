@@ -3,7 +3,7 @@ import "./SchemaForm.css";
 import { useEffect, useState } from "react";
 import { Field, Schema } from "../types";
 import Button from "./Button";
-import { faAdd, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faAdd, faTrashAlt, faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "./IconButton";
 import Alert from "./Alert";
 interface SchemaFormProps {
@@ -59,6 +59,14 @@ export default function SchemaForm({ onChange, schema }: Readonly<SchemaFormProp
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
   }
+  
+  function moveField(oldIndex: number, newIndex: number) {
+    const newFields = [...fields];
+    const field = newFields.splice(oldIndex, 1)[0];
+    newFields.splice(newIndex, 0, field);
+    setFields(newFields);
+  }
+
   const createOrUpdateSchema = async () => {
     setError(null);
     try {
@@ -131,6 +139,19 @@ export default function SchemaForm({ onChange, schema }: Readonly<SchemaFormProp
                 />
               </div>
               <div className="controls">
+                { fields.length > 1 && 
+                <div>
+                  <IconButton
+                    icon={faArrowUp}
+                    variant="secondary"
+                    onClick={() => i > 0 && moveField(i, i - 1)}
+                  />
+                  <IconButton
+                    icon={faArrowDown}
+                    variant="secondary"
+                    onClick={() => i < fields.length - 1 && moveField(i, i + 1)}
+                  />
+                </div>}
                 <IconButton
                   icon={faTrashAlt}
                   variant="danger"
