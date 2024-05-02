@@ -7,7 +7,7 @@ import DashboardPage from './pages/DashboardPage.tsx'
 import SchemasPage from './pages/SchemasPage.tsx'
 import DataPage from './pages/DataPage.tsx'
 import CreateSchemaPage from './pages/CreateSchemaPage.tsx'
-
+import EditSchemaPage from './pages/EditSchemaPage.tsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,7 +18,8 @@ const router = createBrowserRouter([
         path: "/schemas",
         children: [
           { index: true, element: <SchemasPage /> },
-          { path: "new", element: <CreateSchemaPage /> }
+          { path: "new", element: <CreateSchemaPage /> },
+          { path: "edit/:id", element: <EditSchemaPage />}
         ]
       },
       { path: "/data", element: <DataPage /> },

@@ -8,17 +8,28 @@ import IconButton from "./IconButton";
 import Alert from "./Alert";
 interface SchemaFormProps {
   onChange: (schema: Schema) => void;
+  schema?: Schema;
 }
-export default function SchemaForm({ onChange }: SchemaFormProps) {
-  const [slug, setSlug] = useState<Schema["slug"]>("");
-  const [fields, setFields] = useState<Schema["fields"]>([]);
+
+export default function SchemaForm({ onChange, schema }: Readonly<SchemaFormProps>) {
+  const [_id, set_id] = useState<Schema["_id"]>(schema?._id || "<unknown>");
+  const [slug, setSlug] = useState<Schema["slug"]>(schema?.slug || "");
+  const [fields, setFields] = useState<Schema["fields"]>(schema?.fields || []);
   const [buttonClassName, setButtonClassName] = useState("btn-disabled");
   const [schemaCreated, setSchemaCreated] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    onChange({ _id: "<unknown>", slug, fields });
-  }, [slug, fields, onChange]);
+    if (schema) {
+      set_id(schema._id);
+      setSlug(schema.slug);
+      setFields(schema.fields);
+    }
+  }, [schema]);
+
+  useEffect(() => {
+    onChange({ _id, slug, fields });
+  }, [_id, slug, fields, onChange]);
 
   function addField() {
     setFields([...fields, { name: "", formula: "" }]);
@@ -56,28 +67,31 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
     setFields(newFields);
   }
 
-  const createSchema = async () => {
+  const createOrUpdateSchema = async () => {
     setError(null);
     try {
       const schemaData = {
         slug,
         fields,
       };
-      const response = await fetch("/api/schemas", {
-        method: "POST",
+      const response = await fetch(`/api/schemas${schema ? `/${_id}` : ''}`, {
+        method: schema ? "PATCH" : "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(schemaData),
       });
-      console.log(response);
       if (!response.ok || response.status === 400) {
         const res = await response.json();
         setError(`${res.error}`);
         throw new Error("Failed to create schema");
       }
       setSchemaCreated(true);
+
       console.log("Schema created successfully");
+      setTimeout(() => {
+        setSchemaCreated(false);
+      }, 3000);
     } catch (error) {
       console.error("Error creating schema:", error);
     }
@@ -150,12 +164,12 @@ export default function SchemaForm({ onChange }: SchemaFormProps) {
           </Button>
         </div>
         <div className="add-btn-container">
-          <Button className={buttonClassName} onClick={createSchema}>
-            Create Schema
+          <Button className={buttonClassName} onClick={createOrUpdateSchema}>
+            {schema ? "Update" : "Create"} Schema
           </Button>
         </div>
         {error && <div><br/> <Alert variant="danger">{error} </Alert></div>}
-        <div className="add-btn-container"> {schemaCreated && <p>Schema created successfully!</p>} </div>  
+        <div className="add-btn-container"> {schemaCreated && <p>Schema {schema ? "Updated" : "Created"} successfully!</p>} </div>  
       </section>
     </form>
   );
