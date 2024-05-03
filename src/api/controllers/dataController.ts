@@ -80,3 +80,8 @@ export async function deleteByIdOrSlug(req: Request, res: Response) {
 
   res.json(data);
 }
+
+export async function list(req: Request, res: Response) {
+  const data = await dataService.list();
+  res.json(data);
+}
