@@ -8,9 +8,11 @@ export default function Sidebar() {
   return <nav className="sidebar">
     <SidebarHeading />
     <ul>
+      
       <SidebarLink href="/">Dashboard</SidebarLink>
       <SidebarLink href="/schemas">Schemas</SidebarLink>
       <SidebarLink href="/data">Data</SidebarLink>
+      
     </ul>
   </nav>
 }
