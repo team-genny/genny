@@ -1,0 +1,31 @@
+.error-boundary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa; /* Light gray background */
+}
+
+.error-content {
+  text-align: center;
+}
+
+.error-content h2 {
+  color: #dc3545; /* Red color */
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-content p {
+  color: #6c757d; /* Dark gray color */
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-left: 25%;
+}

@@ -1,0 +1,19 @@
+.coin-flip-game {
+    text-align: center;
+  }
+  
+  .coin-flip-game button {
+    margin: 10px;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  
+  .coin-result {
+    margin-top: 20px;
+  }
+  
+  .coin-result img {
+    width: 100px;
+    margin-top: 10px;
+  }
+  

@@ -12,5 +12,4 @@ return {
   isLoading,
   mutate // Return the mutate function
 };
-
-}
+};

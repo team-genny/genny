@@ -23,12 +23,36 @@
   },
   "keywords": [],
   "contributors": [
-    { "name": "Fergus Bentley", "email": "mail@fergcb.uk", "url": "https://fergcb.uk" },
-    { "name": "Aamirah Patel", "email": "aamirahpatel@hotmail.co.uk", "url": "https://github.com/AamirahP" },
-    { "name": "Joshua Mushaikwa", "email": "jjnotm@gmail.com", "url": "https://github.com/incogzino" },
-    { "name": "Nial", "email": "nial@n1al.com", "url": "https://n1al.com" },
-    { "name": "Srijan Vaddadi", "email": "srijan.vaddadi@gmail.com", "url": "https://srijan.uk" },
-    { "name": "sanju", "email": "ghandhisanju@gmail.com", "url": "https://n1al.com" }
+    {
+      "name": "Fergus Bentley",
+      "email": "mail@fergcb.uk",
+      "url": "https://fergcb.uk"
+    },
+    {
+      "name": "Aamirah Patel",
+      "email": "aamirahpatel@hotmail.co.uk",
+      "url": "https://github.com/AamirahP"
+    },
+    {
+      "name": "Joshua Mushaikwa",
+      "email": "jjnotm@gmail.com",
+      "url": "https://github.com/incogzino"
+    },
+    {
+      "name": "Nial",
+      "email": "nial@n1al.com",
+      "url": "https://n1al.com"
+    },
+    {
+      "name": "Srijan Vaddadi",
+      "email": "srijan.vaddadi@gmail.com",
+      "url": "https://srijan.uk"
+    },
+    {
+      "name": "sanju",
+      "email": "ghandhisanju@gmail.com",
+      "url": "https://n1al.com"
+    }
   ],
   "license": "ISC",
   "dependencies": {
@@ -41,6 +65,8 @@
     "globals": "^15.0.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
+    "react-error-boundary": "^4.0.13",
+    "react-router-dom": "^6.23.0",
     "typescript-eslint": "^7.7.1",
     "uuid": "^9.0.1",
     "winston": "^3.13.0"
