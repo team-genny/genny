@@ -1,6 +1,7 @@
 import { useState } from "react"
 import clsx from "clsx"
 import "./Page.css"
+import { useEffect } from "react"
 import Sidebar from "./Sidebar"
 import IconButton from "./IconButton"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
@@ -12,8 +13,11 @@ interface PageProps {
 
 export default function Page({ className, children }: PageProps) {
 
-  const [hideNavBar, setHideNavBar] = useState(false)
+const [hideNavBar, setHideNavBar] = useState(false)
 
+useEffect(() => {if (window.innerWidth<1023){
+  setHideNavBar(true)
+}},[])
   function handleClick() {
     setHideNavBar(!hideNavBar)
   }
