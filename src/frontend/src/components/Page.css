@@ -5,3 +5,14 @@
   max-width: 1000px;
   margin-inline: auto;
 }
+
+.navbar-ShowHide{
+  margin:0;
+
+  position: fixed;
+  bottom:1rem;
+  right:1rem;
+}
+@media(min-width: 1024px){
+.navbar-ShowHide{ display:none;}
+}
