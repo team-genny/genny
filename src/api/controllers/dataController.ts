@@ -67,3 +67,8 @@ export async function readByIdOrSlug(req: Request, res: Response) {
 
   res.json(data);
 }
+
+export async function readAll(req: Request, res: Response) {
+  const data = await dataService.list();
+  res.json(data);
+}
