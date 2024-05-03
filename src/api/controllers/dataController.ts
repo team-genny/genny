@@ -67,3 +67,16 @@ export async function readByIdOrSlug(req: Request, res: Response) {
 
   res.json(data);
 }
+
+export async function deleteByIdOrSlug(req: Request, res: Response) {
+  const idOrSlug = req.params.idOrSlug;
+
+  const data = await dataService.deletePersistData(idOrSlug);
+
+  if (data === null)
+    throw new ResourceNotFoundError(
+      `No peristed data with ID or slug '${idOrSlug}'`
+    );
+
+  res.json(data);
+}
