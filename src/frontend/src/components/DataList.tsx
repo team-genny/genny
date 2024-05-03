@@ -10,7 +10,7 @@ export default function DataList() {
   const { schemas, error, isLoading, mutate } = useSchemas();
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
-    schema: null,
+    schema: "",
     count: "0",
     slug: ""
   });
@@ -23,7 +23,7 @@ export default function DataList() {
   const closeForm = () => {
     setShowForm(false);
     setFormData({
-      schema: null,
+      schema: "",
       count: "0",
       slug: ""
     });
