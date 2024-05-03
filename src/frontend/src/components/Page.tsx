@@ -4,22 +4,17 @@ import "./Page.css"
 import Sidebar from "./Sidebar"
 import IconButton from "./IconButton"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
+
 interface PageProps {
   className?: string
   children: React.ReactNode
 }
 
-
-
-
 export default function Page({ className, children }: PageProps) {
 
+  const [hideNavBar, setHideNavBar] = useState(false)
 
-
-  const [hideNavBar, setHideNavBar]=useState (false)
-
-    
-  function handleClick(){
+  function handleClick() {
     setHideNavBar(!hideNavBar)
   }
 
@@ -30,10 +25,7 @@ export default function Page({ className, children }: PageProps) {
         {children}
       </main>
       <div className="navbar-ShowHide">
-      {hideNavBar
-        ? <IconButton icon={faBars} onClick={handleClick} />
-        : <IconButton icon={faBars} onClick={handleClick} />
-      }
+      <IconButton icon={faBars} onClick={handleClick} variant="primary" />
       </div>
     </>
   )}
