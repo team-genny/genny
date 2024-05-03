@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Page from "../components/Page";
 import useSchemas from "../api/useSchemas";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import Button from "../components/Button";
+import "./SchemasPage.css"
 
 export default function DashboardPage() {
   const { schemas } = useSchemas();
@@ -22,7 +25,10 @@ export default function DashboardPage() {
 
   return (
     <Page>
+      <header>
       <h1>Dashboard</h1>
+        <Button icon={faPlus} href="/schemas/new">Create Schema</Button>
+      </header>
       <div>Total Active Schemas: {schemas?.length ?? 'Loading...'}</div>
       <div>Total Persisted Data Records: {data.length}</div>
     </Page>
