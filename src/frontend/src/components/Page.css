@@ -12,7 +12,7 @@
   bottom: 1rem;
   right: 1rem;
   z-index: 1010;
-
+/* if the screen is large enough no need to show hide nav bar so do not display the button */
   @media(min-width: 1024px) {
     display:none;
   }
