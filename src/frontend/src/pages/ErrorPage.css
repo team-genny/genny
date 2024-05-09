@@ -1,0 +1,30 @@
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .error-content {
+    text-align: center;
+  }
+  
+  .error-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  .error-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .error-content a {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  .error-content a:hover {
+    color: darkblue;
+  }
+  
