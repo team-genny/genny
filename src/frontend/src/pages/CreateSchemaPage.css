@@ -8,6 +8,9 @@
 
 .side-by-side {
   display: flex;
+  @media(max-width: 1023px) {
+  flex-direction: column;
+}
 }
 
 .side-by-side > *:first-child {
@@ -18,4 +21,7 @@
 
 .side-by-side > * {
   width: 50%;
+   @media(max-width: 1023px) {
+    width:100%;
+  }
 }
