@@ -6,7 +6,7 @@ import { AxiosError } from 'axios';
 
 export default function useAllData(): SWRData<{ data: unknown }> {
   const { data, error, isLoading } = useSWR<Record<string, unknown>, AxiosError>(
-    `/api/data/}`,
+    `/api/data/`,
     fetcher,
     { revalidateOnFocus: false }
   );
