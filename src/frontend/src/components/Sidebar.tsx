@@ -5,6 +5,7 @@ import { faDice, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default function Sidebar() {
+  // throw new error 
   return <nav className="sidebar">
     <SidebarHeading />
     <ul>
