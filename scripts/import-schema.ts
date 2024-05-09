@@ -26,9 +26,11 @@ if (!filePath.endsWith('.json') && !filePath.endsWith('.yaml') && !filePath.ends
 
 let fileData;
 if (filePath.endsWith('.json')) {
-    fileData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    const jsonData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+    fileData = Array.isArray(jsonData) ? jsonData : [jsonData];
 } else if (filePath.endsWith('.yaml') || filePath.endsWith('.yml')) {
-    fileData = yaml.parse(fs.readFileSync(filePath, 'utf-8'));
+    const yamlData = yaml.parse(fs.readFileSync(filePath, 'utf-8'));
+    fileData = Array.isArray(yamlData) ? yamlData : [yamlData];
 }
 
 async function insertData() {
