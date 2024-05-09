@@ -1,5 +1,5 @@
 export interface Schema {
-  createdAt: string | number | Date
+  createdAt: string
   _id: string
   slug: string
   fields: Array<Field>

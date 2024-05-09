@@ -7,7 +7,7 @@ import Page from "../components/Page";
 
 export default function CreateSchemaPage() {
 
-  const [schema, setSchema] = useState<Schema>({ _id: "<unknown>", slug: "", fields: [] })
+  const [schema, setSchema] = useState<Schema>({ _id: "<unknown>", slug: "", fields: [], createdAt: ""})
 
   return (
     <Page className="create-schema-page">

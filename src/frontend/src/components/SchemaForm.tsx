@@ -13,7 +13,7 @@ interface SchemaFormProps {
 
 export default function SchemaForm({ onChange, schema }: Readonly<SchemaFormProps>) {
   const [_id, set_id] = useState<Schema["_id"]>(schema?._id || "<unknown>");
-  const [createdAt] = useState<Schema["createdAt"]>(schema?.createdAt || new Date());
+  const [createdAt] = useState<Schema["createdAt"]>(schema?.createdAt || new Date().toISOString());
   const [slug, setSlug] = useState<Schema["slug"]>(schema?.slug || "");
   const [fields, setFields] = useState<Schema["fields"]>(schema?.fields || []);
   const [buttonClassName, setButtonClassName] = useState("btn-disabled");

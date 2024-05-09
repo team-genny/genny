@@ -8,7 +8,7 @@ import Page from "../components/Page";
 export default function EditSchemaPage() {
   const { id } = useParams<{ id: string }>();
   if (!id) throw new Error("No schema ID provided");
-  const [schema, setSchema] = useState<Schema>({ _id: id, slug: "", fields: [] });
+  const [schema, setSchema] = useState<Schema>({ _id: id, slug: "", fields: [], createdAt: ""});
 
   useEffect(() => {
     fetch(`/api/schemas/${id}`)

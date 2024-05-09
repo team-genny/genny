@@ -21,6 +21,8 @@ const schemaSchema = new MongooseSchema<ISchema>({
     }],
     required: true,
   }
+},{
+  timestamps: true
 })
 
 const Schema = model<ISchema>("schema", schemaSchema)
