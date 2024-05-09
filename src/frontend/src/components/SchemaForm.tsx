@@ -13,6 +13,7 @@ interface SchemaFormProps {
 
 export default function SchemaForm({ onChange, schema }: Readonly<SchemaFormProps>) {
   const [_id, set_id] = useState<Schema["_id"]>(schema?._id || "<unknown>");
+  const [createdAt] = useState<Schema["createdAt"]>(schema?.createdAt || new Date());
   const [slug, setSlug] = useState<Schema["slug"]>(schema?.slug || "");
   const [fields, setFields] = useState<Schema["fields"]>(schema?.fields || []);
   const [buttonClassName, setButtonClassName] = useState("btn-disabled");
@@ -28,8 +29,8 @@ export default function SchemaForm({ onChange, schema }: Readonly<SchemaFormProp
   }, [schema]);
 
   useEffect(() => {
-    onChange({ _id, slug, fields });
-  }, [_id, slug, fields, onChange]);
+    onChange({ _id, slug, fields, createdAt});
+  }, [_id, slug, fields, createdAt, onChange]);
 
   function addField() {
     setFields([...fields, { name: "", formula: "" }]);
