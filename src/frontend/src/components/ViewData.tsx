@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Page from "../components/Page";
 import usePersistentData from "../api/usePersistentData";
 import useSchemas from "../api/useSchemas";
 
@@ -17,7 +16,7 @@ export default function ViewData({ id }: { id: string }) {
   }, [data]);
 
   return (
-    <Page>
+    <div>
       {isLoading && <div>Loading...</div>}
       {error && <div>Error: {error.message}</div>}
       {dataset && (
@@ -49,6 +48,6 @@ export default function ViewData({ id }: { id: string }) {
           </table>
         </div>
       )}
-    </Page>
+    </div>
   );
 }
