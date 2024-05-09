@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import Page from "../components/Page";
+import "./ErrorPage.css"
 
 export default function ErrorPage() {
   return (
     <Page className="error-page">
-      <div>
+      <div className="error-content">
         404: Error. This page does not exist. <br />
-        <Link src="/">Back to Homepage</Link>
+        <Link to="/">Back to Homepage</Link>
       </div>
     </Page>
   );

@@ -9,12 +9,10 @@ import DataPage from "./pages/DataPage.tsx";
 import CreateSchemaPage from "./pages/CreateSchemaPage.tsx";
 import EditSchemaPage from "./pages/EditSchemaPage.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
-// import ErrorBoundary from "./components/ErrorBoundary.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <ErrorBoundary children={undefined} />,
     children: [
       { index: true, element: <DashboardPage /> },
       {
@@ -34,8 +32,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    {/* <ErrorBoundary> */}
     <RouterProvider router={router} />
-    {/* </ErrorBoundary> */}
   </React.StrictMode>
 );

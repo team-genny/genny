@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f8f9fa; /* Light gray background */
+  background-color: #f8f9fa; 
 }
 
 .error-content {
@@ -11,13 +11,13 @@
 }
 
 .error-content h2 {
-  color: #dc3545; /* Red color */
+  color: #dc3545; 
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .error-content p {
-  color: #6c757d; /* Dark gray color */
+  color: #6c757d; 
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
