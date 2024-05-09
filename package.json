@@ -13,7 +13,7 @@
     "api:test": "jest",
     "api:build": "tsc --build --clean && tsc",
     "api:start": "node build/api/server.js",
-    "api:dev": "MODE=dev && nodemon --watch src/api --exec tsx ./src/api/server.ts",
+    "api:dev": "cross-env MODE=dev && nodemon --watch src/api --exec tsx ./src/api/server.ts",
     "fe:init": "cd src/frontend && npm install",
     "fe:build": "cd src/frontend && npm run build",
     "fe:dev": "cd src/frontend && npm run dev",
@@ -33,6 +33,7 @@
   "license": "ISC",
   "dependencies": {
     "@eslint/js": "^9.1.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
