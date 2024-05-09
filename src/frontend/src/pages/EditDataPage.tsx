@@ -9,7 +9,6 @@ export default function EditDataPage() {
   }
   return (
     <Page>
-      <h1>Data for id {id} </h1>
       <ViewData id={id} />
     </Page>
   )
