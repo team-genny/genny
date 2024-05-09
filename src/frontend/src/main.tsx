@@ -9,6 +9,8 @@ import DataPage from "./pages/DataPage.tsx";
 import CreateSchemaPage from "./pages/CreateSchemaPage.tsx";
 import EditSchemaPage from "./pages/EditSchemaPage.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
+import EditDataPage from "./pages/EditDataPage.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,11 +22,16 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <SchemasPage /> },
           { path: "new", element: <CreateSchemaPage /> },
-          { path: "edit/:id", element: <EditSchemaPage /> },
-        ],
+          { path: "edit/:id", element: <EditSchemaPage /> }
+        ]
       },
-      { path: "/data", element: <DataPage /> },
-
+      { 
+        path: "/data", 
+        children: [
+        { index: true, element: <DataPage /> }, 
+        { path: ":id", element: <EditDataPage /> }
+        ]
+      },
       { path: "*", element: <ErrorPage /> },
     ],
   },

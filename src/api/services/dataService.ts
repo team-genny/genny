@@ -56,3 +56,10 @@ export async function createPersistData(data: IData) {
   const saved = await persistData.save()
   return saved._id
 }
+
+export async function deletePersistData(id: string) {
+  const value = await findPersistData(id)
+  if (value === null) throw new ResourceNotFoundError('No persisted data exists with the Id or Slug provided')
+  await Data.findByIdAndDelete(value._id)
+
+}
