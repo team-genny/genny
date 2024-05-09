@@ -30,7 +30,7 @@ export default function SchemasList() {
       <tbody>
         {schemas.map(schema => (
           <tr key={schema._id}>
-            <td className="slug">{schema.slug}</td>
+            <td className="slug"><div>{schema.slug}</div></td>
             <td className="fields">{schema.fields.length} fields</td>
             <td className="controls">
               <Button size="sm" icon={faPencil} href={`/schemas/edit/${schema._id}`}>Edit</Button>

@@ -25,6 +25,26 @@
   font-weight: var(--gen-fw-bold);
   padding-right: 4rem;
   padding-left:1rem;
+  @media only screen and (max-width: 1023px){
+    padding-right: 2rem;
+
+  };
+  @media only screen and (max-width: 720px){
+    padding-right: 0.5rem;
+
+  };
+}
+.schemas-list .slug > div{
+  width:27rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media only screen and (max-width: 1023px){
+    width:20rem;
+  };
+  @media only screen and (max-width: 720px){
+    width:8rem;
+  };
 }
 
 .schemas-list .fields {
