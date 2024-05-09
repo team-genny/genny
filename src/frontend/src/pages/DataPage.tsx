@@ -14,7 +14,7 @@ type Data = {
 };
 
 export default function DataPage() {
-  const { data: datas, error, isLoading } = useAllData();
+  const { data: datas, error, isLoading, mutate } = useAllData();
   const [showForm, setShowForm] = useState(false);
   
   // Define a type for the form data
@@ -52,7 +52,7 @@ export default function DataPage() {
           Create
         </Button>
       </div>
-      {showForm && <DataForm setShowForm={setShowForm} setFormData={setFormData} formData={formData} />}
+      {showForm && <DataForm setShowForm={setShowForm} setFormData={setFormData} formData={formData} mutate={mutate} />}
       <DataList datas={datas as Data[]} error={error as Error} isLoading={isLoading}/>
     </Page>
   );

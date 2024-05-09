@@ -1,11 +1,12 @@
 import useSWR from 'swr';
 import fetcher from "./fetcher";
 import SWRData from './SWRData';
+import { KeyedMutator } from 'swr';
 
 import { AxiosError } from 'axios';
 
-export default function useAllData(): SWRData<{ data: unknown }> {
-  const { data, error, isLoading } = useSWR<Record<string, unknown>, AxiosError>(
+export default function useAllData(): SWRData<{ data: unknown }> & { mutate: KeyedMutator<Record<string, unknown >>}{
+  const { data, error, isLoading, mutate } = useSWR<Record<string, unknown>, AxiosError>(
     `/api/data/`,
     fetcher,
     { revalidateOnFocus: false }
@@ -16,6 +17,7 @@ export default function useAllData(): SWRData<{ data: unknown }> {
       data: error.response?.data,
       error: undefined,
       isLoading,
+      mutate
     };
   }
   if (error) {
@@ -23,6 +25,7 @@ export default function useAllData(): SWRData<{ data: unknown }> {
       data: undefined,
       error,
       isLoading,
+      mutate
     };
   }
 
@@ -30,5 +33,6 @@ export default function useAllData(): SWRData<{ data: unknown }> {
     data: data,
     error,
     isLoading,
+    mutate
   };
 }

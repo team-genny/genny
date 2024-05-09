@@ -15,9 +15,10 @@ type DataFormProps = {
   setShowForm: (value: boolean) => void;
   setFormData: (value: FormData) => void;
   formData: FormData;
+  mutate: any
 };
 
-export default function DataForm({ setShowForm, setFormData, formData}: DataFormProps) {
+export default function DataForm({ setShowForm, setFormData, formData, mutate}: DataFormProps) {
   const [error, setError] = useState<Error | null>(null);
   const closeForm = () => {
     setShowForm(false);
@@ -40,14 +41,18 @@ export default function DataForm({ setShowForm, setFormData, formData}: DataForm
       return;
     }
     try {
-      await fetch(`/api/data/persistent`, {
+      const response = await fetch(`/api/data/persistent`, {
         method: "POST",
         body: JSON.stringify({ schema, count: parseInt(count), slug }),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      closeForm();
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error);
+      }
+      mutate();
     } catch (error) {
       setError(error as Error);
       console.error("Error creating data:", error);

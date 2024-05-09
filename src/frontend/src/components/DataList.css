@@ -124,3 +124,8 @@
   display: flex;
   gap: 0.5rem;
 }
+
+.error-message {
+  color: var(--gen-col-red);
+  margin-block: 0.5rem;
+}

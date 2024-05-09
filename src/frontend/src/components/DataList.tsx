@@ -17,7 +17,7 @@ type DataListProps = {
 };
 
 export default function DataList({ datas: initialDatas, error, isLoading }: DataListProps) {
-  const [datas, setDatas] = useState<Data[]>(initialDatas || []); // Initialize with empty array if datas is undefined
+  const [datas, setDatas] = useState<Data[]>(initialDatas || []);
   const [deletingDataId, setDeletingDataId] = useState<string | null>(null);
 
   useEffect(() => {
