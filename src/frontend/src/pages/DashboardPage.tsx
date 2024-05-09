@@ -42,17 +42,17 @@ export default function DashboardPage() {
       </header>
       <br></br>
       <div className="action-buttons">
-      <Button icon={faPlus} href="/schemas/new">Create Schema</Button>
-      <Button icon={faMagnifyingGlass} href="/schemas">View Schemas</Button>
-      <Button icon={faDatabase} href="/data">View Data</Button>
+      <Button className="button" icon={faPlus} href="/schemas/new">Create Schema</Button>
+      <Button className="button" icon={faMagnifyingGlass} href="/schemas">View Schemas</Button>
+      <Button className="button" icon={faDatabase} href="/data">View Data</Button>
       </div>
       <br></br>
       <div className="dashboard-mainn">
-         <h3>Total Active Schemas: {schemas ? schemas.length : 'Loading...'}</h3>
+         <h3 className="schema-info">Total Active Schemas: {schemas ? schemas.length : 'Loading...'}</h3>
          <br></br>
          <h3>Total Persisted Data Records: {data.length}</h3>
          <br></br>
-         <h3>Most Recently Created Schemas:</h3>
+         <h3 className="schemas-heading">Most Recently Created Schemas:</h3>
          <ol className="schema-list">
            {recentSchemas.slice().reverse().map((schema, index) => (
              <li key={schema._id} className="schema-list-item">{index + 1}. {schema.slug}</li>
