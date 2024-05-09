@@ -1,0 +1,44 @@
+.dashboard-headerr {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .button {
+    width: 15rem;
+    height: 5rem;
+  }
+
+  .schema-info {
+    margin-top: 1rem;
+  }
+
+  .dashboard-mainn {
+    padding: 20px;
+  }
+
+  .schema-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .schemas-heading {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .schema-list-item {
+    border-radius: var(--gen-border-radius);
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;;
+    background-color: var(--gen-col-bg-panel);
+  }

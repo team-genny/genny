@@ -10,6 +10,6 @@ return {
   schemas: data,
   error,
   isLoading,
-  mutate // Return the mutate function
+  mutate
 };
 };
