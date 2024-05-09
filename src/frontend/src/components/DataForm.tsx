@@ -35,6 +35,10 @@ export default function DataForm({ setShowForm, setFormData, formData}: DataForm
 
   const handleSubmit = async () => {
     const { schema, count, slug } = formData;
+    if (count === "0") {
+      setError(new Error("Count must be greater than 0"));
+      return;
+    }
     try {
       await fetch(`/api/data/persistent`, {
         method: "POST",
