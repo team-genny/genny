@@ -5,6 +5,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
+  }
+
+  .dashboard-buttons {
+    width: 300px;
+  border: solid red 2px;
+    /* background-color: #1e1e2e;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; */
   }
 
   .dashboard-mainn {

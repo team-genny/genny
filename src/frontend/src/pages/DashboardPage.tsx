@@ -39,10 +39,12 @@ export default function DashboardPage() {
     <Page>
       <header className="dashboard-headerr">
         <h1>Dashboard</h1>
-        <Button icon={faPlus} href="/schemas/new">Create Schema</Button>
-        <Button href="/schemas">View Schemas</Button>
-        <Button href="/data">View Data</Button>
       </header>
+      <h2>
+      <Button icon={faPlus} href="/schemas/new">Create Schema</Button>
+      <Button href="/schemas">View Schemas</Button>
+      <Button href="/data">View Data</Button>
+      </h2>
       <div className="dashboard-mainn">
          <h3>Total Active Schemas: {schemas ? schemas.length : 'Loading...'}</h3>
          <div>--------------------------------------</div>
