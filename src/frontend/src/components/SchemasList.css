@@ -1,30 +1,30 @@
 .schemas-list {
   margin-top: 1rem;
   width: 100%;
-  border-collapse: separate;
+  border-collapse: collapse;
   border-spacing: 0;
+  position:relative;
+}
+.schemas-list tr::before{
+  content:""; 
+  background-color: var(--gen-col-bg-panel);
+  width: 100%;
+  height:3rem;
+  position:absolute;
+  z-index: -1;
+  border-radius: var(--gen-border-radius);
+  
 }
 
 .schemas-list td {
-  background-color: var(--gen-col-bg-panel);
   padding-block: 0.75rem;
-}
-
-.schemas-list td:first-child {
-  padding-left: 1rem;
-  border-top-left-radius: var(--gen-border-radius);
-  border-bottom-left-radius: var(--gen-border-radius);
-}
-
-.schemas-list td:last-child {
-  padding-right: 1rem;
-  border-top-right-radius: var(--gen-border-radius);
-  border-bottom-right-radius: var(--gen-border-radius);
+  padding-bottom:1.25rem;
 }
 
 .schemas-list .slug {
   font-weight: var(--gen-fw-bold);
   padding-right: 4rem;
+  padding-left:1rem;
 }
 
 .schemas-list .fields {
@@ -35,4 +35,5 @@
 .schemas-list .controls {
   display: flex;
   gap: 0.5rem;
+  padding-right:1rem;
 }
