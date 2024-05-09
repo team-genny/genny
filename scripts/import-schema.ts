@@ -6,7 +6,6 @@ import Schema from "../src/api/models/Schema";
 
 const MONGODB_URI = process.env.MONGODB_URI ?? "mongodb://localhost:27017/genny"
 
-// Connect to MongoDB using Mongoose
 mongoose.connect(MONGODB_URI)
 
 // Read the JSON or YAML file from command line argument
