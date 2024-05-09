@@ -8,25 +8,26 @@ import SchemasPage from "./pages/SchemasPage.tsx";
 import DataPage from "./pages/DataPage.tsx";
 import CreateSchemaPage from "./pages/CreateSchemaPage.tsx";
 import EditSchemaPage from "./pages/EditSchemaPage.tsx";
-import ErrorBoundary from "./components/ErrorBoundary.tsx";
+import ErrorPage from "./pages/ErrorPage.tsx";
+// import ErrorBoundary from "./components/ErrorBoundary.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ErrorBoundary><App /></ErrorBoundary>,
-    errorElement: <ErrorBoundary children={undefined} />,
+    element: <App />,
+    // errorElement: <ErrorBoundary children={undefined} />,
     children: [
-      { index: true, element: <ErrorBoundary><DashboardPage /></ErrorBoundary>},
+      { index: true, element: <DashboardPage /> },
       {
         path: "/schemas",
         children: [
-          { index: true, element: <ErrorBoundary><SchemasPage /></ErrorBoundary> },
-          { path: "new", element: <ErrorBoundary><CreateSchemaPage /> </ErrorBoundary> },
-          { path: "edit/:id", element: <ErrorBoundary><EditSchemaPage /></ErrorBoundary>  },
+          { index: true, element: <SchemasPage /> },
+          { path: "new", element: <CreateSchemaPage /> },
+          { path: "edit/:id", element: <EditSchemaPage /> },
         ],
       },
-      { path: "/data", element: <ErrorBoundary> <DataPage /></ErrorBoundary>},
+      { path: "/data", element: <DataPage /> },
 
-      // { path: "*", element: <ErrorPage /> },
+      { path: "*", element: <ErrorPage /> },
     ],
   },
 ]);
