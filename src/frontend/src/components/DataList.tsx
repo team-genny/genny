@@ -1,72 +1,44 @@
-import { FormEvent, useState } from "react";
-import { faDatabase, faPlus } from "@fortawesome/free-solid-svg-icons";
-import useSchemas from "../api/useSchemas";
+import { faDatabase, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
 import "./DataList.css";
-import TextInput from "./TextInput";
-import NumberInput from "./NumberInput";
+import { useState, useEffect } from "react";
 
-export default function DataList() {
-  const { schemas, error, isLoading, mutate } = useSchemas();
-  const [showForm, setShowForm] = useState(false);
-  const [formData, setFormData] = useState({
-    schema: "",
-    count: "0",
-    slug: ""
-  });
+// Define type for data object
+type Data = {
+  _id: string;
+  slug: string;
+};
 
-  const openForm = (schema: string) => {
-    setShowForm(true);
-    setFormData({ ...formData, schema });
-  };
+// Define type for props
+type DataListProps = {
+  datas: Data[] | undefined; // Update type to allow for undefined
+  error: Error;
+  isLoading: boolean;
+};
 
-  const closeForm = () => {
-    setShowForm(false);
-    setFormData({
-      schema: "",
-      count: "0",
-      slug: ""
-    });
-  };
+export default function DataList({ datas: initialDatas, error, isLoading }: DataListProps) {
+  const [datas, setDatas] = useState<Data[]>(initialDatas || []); // Initialize with empty array if datas is undefined
+  const [deletingDataId, setDeletingDataId] = useState<string | null>(null);
 
-  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-    console.log (e);
-    const { name, value } = e.target as HTMLInputElement;
-    console.log(name, value);
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async () => {
-    console.log(formData);
-    const { schema, count, slug } = formData;
-    try {
-      await fetch(`/api/data/persistent`, {
-        method: "POST",
-        body: JSON.stringify({ schema, count: parseInt(count), slug }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      mutate();
-    } catch (error) {
-      console.error("Error creating data:", error);
+  useEffect(() => {
+    if (initialDatas) { // Update datas state only if initialDatas is defined
+      setDatas(initialDatas);
     }
-    closeForm();
-  };
+  }, [initialDatas]);
 
-  // const handleDelete = async (schemaId: any) => {
-  //   try {
-  //     setDeletingDataId(schemaId);
-  //     await fetch(`/api/data/${schemaId}`, {
-  //       method: "DELETE",
-  //     });
-  //     mutate();
-  //   } catch (error) {
-  //     console.error("Error deleting data:", error);
-  //   } finally {
-  //     setDeletingDataId(null);
-  //   }
-  // };
+  const handleDelete = async (schemaId: string) => {
+    try {
+      setDeletingDataId(schemaId);
+      await fetch(`/api/data/${schemaId}`, {
+        method: "DELETE",
+      });
+      setDatas(prevDatas => prevDatas.filter(data => data._id !== schemaId));
+    } catch (error) {
+      console.error("Error deleting data:", error);
+    } finally {
+      setDeletingDataId(null);
+    }
+  };
 
   if (error) return <div>Failed to load schemas.</div>;
   if (isLoading) return <div>Loading...</div>;
@@ -75,79 +47,33 @@ export default function DataList() {
     <div className="data-list-container">
       <table className="schemas-list">
         <tbody>
-          {schemas.map((schema) => (
-            <tr key={schema._id}>
-              <td className="slug">{schema.slug}</td>
-              <td className="fields">{schema.fields.length} fields</td>
+          {datas && datas.map((data) => ( // Check if datas is defined before mapping
+            <tr key={data._id}>
+              <td className="slug">{data.slug}</td>
+              <td className="fields"> </td>
               <td className="controls">
                 <Button
                   size="sm"
                   icon={faDatabase}
                   variant="secondary"
-                  href={`/data/${schema._id}`}
+                  href={`/data/${data._id}`}
                 >
                   View
                 </Button>
                 <Button
                   size="sm"
-                  icon={faPlus}
-                  variant="primary"
-                  onClick={() => openForm(schema._id)}
+                  icon={faTrashAlt}
+                  variant="danger"
+                  onClick={() => handleDelete(data._id)}
+                  disabled={deletingDataId === data._id}
                 >
-                  Create
+                  {deletingDataId === data._id ? 'Deleting...' : 'Delete'}
                 </Button>
-                {/* <Button size="sm" 
-                  icon={faTrashAlt} 
-                  variant="danger" 
-                  onClick={() => handleDelete(schema._id)} 
-                  disabled={deletingDataId === schema._id}
-                >
-                  {deletingDataId === schema._id ? 'Deleting...' : 'Delete'}
-                </Button> */}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      {showForm && (
-        <div className="overlay">
-          <div className="form-container">
-            <h2>Create Data</h2>
-            <form onSubmit={(event)=>event.preventDefault()}>
-              <TextInput
-                id="schema"
-                label="Schema ID"
-                name="schema"
-                value={formData.schema || ""}
-                disabled
-              />
-              <NumberInput
-                name="count"
-                id="Count"
-                label = "Count"
-                value={formData.count}
-                onChange={handleInputChange}
-                min={0}
-              />
-              <TextInput
-                name="slug"
-                id={formData.slug}
-                label="Slug"
-                value={formData.slug}
-                onChange={(e) => handleInputChange(e)}
-              />
-              <div className="button-group">
-                <Button onClick={closeForm}>
-                  Cancel
-                </Button>
-                <Button variant="primary" onClick={handleSubmit}>
-                  Submit
-                </Button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
