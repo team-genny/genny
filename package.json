@@ -23,16 +23,47 @@
   },
   "keywords": [],
   "contributors": [
-    { "name": "Fergus Bentley", "email": "mail@fergcb.uk", "url": "https://fergcb.uk" },
-    { "name": "Aamirah Patel", "email": "aamirahpatel@hotmail.co.uk", "url": "https://github.com/AamirahP" },
-    { "name": "Joshua Mushaikwa", "email": "jjnotm@gmail.com", "url": "https://github.com/incogzino" },
-    { "name": "Nial", "email": "nial@n1al.com", "url": "https://n1al.com" },
-    { "name": "Srijan Vaddadi", "email": "srijan.vaddadi@gmail.com", "url": "https://srijan.uk" },
-    { "name": "sanju", "email": "ghandhisanju@gmail.com", "url": "https://n1al.com" }
+    {
+      "name": "Fergus Bentley",
+      "email": "mail@fergcb.uk",
+      "url": "https://fergcb.uk"
+    },
+    {
+      "name": "Aamirah Patel",
+      "email": "aamirahpatel@hotmail.co.uk",
+      "url": "https://github.com/AamirahP"
+    },
+    {
+      "name": "Joshua Mushaikwa",
+      "email": "jjnotm@gmail.com",
+      "url": "https://github.com/incogzino"
+    },
+    {
+      "name": "Nial",
+      "email": "nial@n1al.com",
+      "url": "https://n1al.com"
+    },
+    {
+      "name": "Srijan Vaddadi",
+      "email": "srijan.vaddadi@gmail.com",
+      "url": "https://srijan.uk"
+    },
+    {
+      "name": "sanju",
+      "email": "ghandhisanju@gmail.com",
+      "url": "https://n1al.com"
+    }
   ],
   "license": "ISC",
   "dependencies": {
     "@eslint/js": "^9.1.1",
+    "@opentelemetry/api": "^1.8.0",
+    "@opentelemetry/auto-instrumentations-web": "^0.39.0",
+    "@opentelemetry/context-zone": "^1.24.1",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.51.1",
+    "@opentelemetry/resources": "^1.24.1",
+    "@opentelemetry/sdk-trace-web": "^1.24.1",
+    "@opentelemetry/semantic-conventions": "^1.24.1",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
