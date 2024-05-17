@@ -54,19 +54,3 @@ services:
       - ./utils/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - app
-
-  # npm:
-  #   image: 'jc21/nginx-proxy-manager:latest'
-  #   restart: unless-stopped
-  #   ports:
-  #     - '80:80' # Public HTTP Port
-  #     - '443:443' # Public HTTPS Port
-  #     - '81:81' # Admin Web Port
-  #   volumes:
-  #     - ./utils/proxyManager:/data
-  #     - ./letsencrypt:/etc/letsencrypt
-  #   networks:
-  #     - nginx-proxy-manager_default
-
-# networks:
-#   nginx-proxy-manager_default:
